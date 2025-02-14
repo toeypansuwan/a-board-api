@@ -56,10 +56,12 @@ describe('AuthService', () => {
       expect(prismaService.user.findUnique).toHaveBeenCalledWith({
         where: { name: 'testUser' },
       });
+
       expect(jwtService.sign).toHaveBeenCalledWith({
         id: mockUser.id,
         name: mockUser.name,
       });
+      
       expect(result).toEqual({ access_token: 'mocked_token' });
     });
 
